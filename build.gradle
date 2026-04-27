@@ -2,11 +2,30 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.0'
     id 'io.spring.dependency-management' version '1.1.4'
+    id 'com.github.node-gradle.node' version '7.0.1'
+}
+
+node {
+    version = '18.17.0'
+    npmVersion = '9.6.7'
+    download = true
+}
+
+task buildFrontend(type: NpmTask) {
+    workingDir = file('src/main/frontend')
+    args = ['run', 'build']
+}
+
+processResources {
+    dependsOn buildFrontend
+    from 'src/main/frontend/build'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+java {
+    sourceCompatibility = '17'
+}
 
 repositories {
     mavenCentral()

@@ -1,5 +1,7 @@
-package com.example.appmanager;
+package com.example.appmanager.infrastructure;
 
+import com.example.appmanager.domain.AppVersion;
+import com.example.appmanager.infrastructure.AppVersionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

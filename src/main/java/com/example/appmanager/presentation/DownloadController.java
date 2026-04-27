@@ -1,5 +1,7 @@
-package com.example.appmanager;
+package com.example.appmanager.presentation;
 
+import com.example.appmanager.application.AppService;
+import com.example.appmanager.domain.AppVersion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;

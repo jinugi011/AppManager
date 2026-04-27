@@ -1,4 +1,4 @@
-package com.example.appmanager;
+package com.example.appmanager.domain;
 
 import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package com.example.appmanager;
+package com.example.appmanager.domain;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -16,6 +16,8 @@ public class AppVersion {
     private Platform platform;
 
     private String filePath;
+
+    private String fileName;
 
     private String iconPath;
 
@@ -47,6 +49,14 @@ public class AppVersion {
 
     public void setPlatform(Platform platform) {
         this.platform = platform;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public String getFilePath() {

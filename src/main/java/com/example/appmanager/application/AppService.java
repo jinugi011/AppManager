@@ -1,5 +1,7 @@
-package com.example.appmanager;
+package com.example.appmanager.application;
 
+import com.example.appmanager.domain.AppVersion;
+import com.example.appmanager.infrastructure.AppVersionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,7 +40,7 @@ public class AppService {
         String appFileName = appFile.getOriginalFilename();
         Path appPath = uploadDir.resolve(appFileName);
         Files.copy(appFile.getInputStream(), appPath);
-        appVersion.setFilePath(appPath.toString());
+        appVersion.setFileName(appFileName);
 
         // Save icon file
         if (iconFile != null && !iconFile.isEmpty()) {
@@ -65,5 +67,33 @@ public class AppService {
 
     public AppVersion getLatestVersion(AppVersion.Platform platform) {
         return repository.findTopByPlatformOrderByUploadDateDesc(platform);
+    }
+
+    public AppVersion getAppVersionById(Long id) {
+        return repository.findById(id).orElseThrow(() -> new RuntimeException("App version not found"));
+    }
+
+    public byte[] downloadApp(Long id) throws IOException {
+        AppVersion appVersion = getAppVersionById(id);
+        Path filePath = Paths.get(appVersion.getFilePath());
+        return Files.readAllBytes(filePath);
+    }
+
+    public void deleteApp(Long id) {
+        AppVersion appVersion = getAppVersionById(id);
+        // Delete file from filesystem
+        try {
+            Files.deleteIfExists(Paths.get(appVersion.getFilePath()));
+            if (appVersion.getIconPath() != null) {
+                Files.deleteIfExists(Paths.get(appVersion.getIconPath()));
+            }
+            if (appVersion.getPlistPath() != null) {
+                Files.deleteIfExists(Paths.get(appVersion.getPlistPath()));
+            }
+        } catch (IOException e) {
+            // Log error but continue with DB deletion
+            System.err.println("Error deleting files: " + e.getMessage());
+        }
+        repository.deleteById(id);
     }
 }

@@ -1,5 +1,6 @@
-package com.example.appmanager;
+package com.example.appmanager.infrastructure;
 
+import com.example.appmanager.domain.AppVersion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

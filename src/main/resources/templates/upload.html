@@ -2,26 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Upload App Version</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Upload New App Version</h1>
-    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
-        <label>Version: <input type="text" name="version" required /></label><br/>
-        <label>Platform:
-            <select name="platform">
-                <option value="ANDROID">Android</option>
-                <option value="IOS">iOS</option>
-            </select>
-        </label><br/>
-        <label>App File: <input type="file" name="appFile" required /></label><br/>
-        <label>Icon File: <input type="file" name="iconFile" /></label><br/>
-        <label>Plist File (iOS): <input type="file" name="plistFile" /></label><br/>
-        <button type="submit">Upload</button>
-    </form>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="h4 mb-0">Upload New App Version</h1>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="version" class="form-label">Version</label>
+                                <input type="text" class="form-control" id="version" name="version" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="platform" class="form-label">Platform</label>
+                                <select class="form-select" id="platform" name="platform">
+                                    <option value="ANDROID">Android</option>
+                                    <option value="IOS">iOS</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="appFile" class="form-label">App File</label>
+                                <input type="file" class="form-control" id="appFile" name="appFile" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="iconFile" class="form-label">Icon File (Optional)</label>
+                                <input type="file" class="form-control" id="iconFile" name="iconFile">
+                            </div>
+                            <div class="mb-3">
+                                <label for="plistFile" class="form-label">Plist File (iOS Only)</label>
+                                <input type="file" class="form-control" id="plistFile" name="plistFile">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
 
-    <h2>Existing Versions</h2>
-    <ul th:each="version : ${versions}">
-        <li th:text="${version.version} + ' - ' + ${version.platform}"></li>
-    </ul>
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">Existing Versions</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush" th:each="version : ${versions}">
+                            <li class="list-group-item" th:text="${version.version} + ' - ' + ${version.platform}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

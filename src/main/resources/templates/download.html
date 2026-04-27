@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Download Apps</title>
+</head>
+<body>
+    <h1>Download Apps</h1>
+    <ul th:each="version : ${versions}">
+        <li>
+            <span th:text="${version.version} + ' - ' + ${version.platform}"></span>
+            <a th:href="@{/download/app/{id}(id=${version.id})}">Download App</a>
+            <a th:if="${version.iconPath}" th:href="@{/download/icon/{id}(id=${version.id})}">Download Icon</a>
+        </li>
+    </ul>
+</body>
+</html>

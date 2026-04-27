@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Upload App Version</title>
+</head>
+<body>
+    <h1>Upload New App Version</h1>
+    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        <label>Version: <input type="text" name="version" required /></label><br/>
+        <label>Platform:
+            <select name="platform">
+                <option value="ANDROID">Android</option>
+                <option value="IOS">iOS</option>
+            </select>
+        </label><br/>
+        <label>App File: <input type="file" name="appFile" required /></label><br/>
+        <label>Icon File: <input type="file" name="iconFile" /></label><br/>
+        <label>Plist File (iOS): <input type="file" name="plistFile" /></label><br/>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Existing Versions</h2>
+    <ul th:each="version : ${versions}">
+        <li th:text="${version.version} + ' - ' + ${version.platform}"></li>
+    </ul>
+</body>
+</html>

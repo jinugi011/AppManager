@@ -1,13 +1,401 @@
-.App {
-  text-align: center;
+:root {
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --text: #111827;
+  --heading: #0f172a;
+  --muted: #64748b;
+  --subtle: #94a3b8;
+  --border: #e5e7eb;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --primary-soft: #eef2ff;
+  --danger: #ef4444;
+  --danger-soft: #fef2f2;
+  --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
 }
 
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
+/* ... existing code ... */
+
+body {
+  background:
+          radial-gradient(circle at top left, rgba(79, 70, 229, 0.14), transparent 32rem),
+          radial-gradient(circle at top right, rgba(14, 165, 233, 0.14), transparent 28rem),
+          var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-.App-header h1 {
+/* ... existing code ... */
+
+.brand h1 {
   margin: 0;
+  color: var(--heading);
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.brand span {
+  display: block;
+  margin-top: 0.1rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ... existing code ... */
+
+.nav-links a {
+  padding: 0.65rem 1rem;
+  color: #475569;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+/* ... existing code ... */
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-section h2 {
+  margin: 0;
+  color: var(--heading);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 950;
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+}
+
+.hero-description {
+  max-width: 620px;
+  margin: 0.9rem 0 0;
+  color: #475569;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+/* ... existing code ... */
+
+.hero-stat-number {
+  font-size: 3rem;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.hero-stat-label {
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+/* ... existing code ... */
+
+.panel-header h3 {
+  margin: 0;
+  color: var(--heading);
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.panel-header p {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+/* ... existing code ... */
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #334155;
+  font-size: 0.88rem;
+  font-weight: 850;
+  line-height: 1.3;
+}
+
+.modern-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  outline: none;
+  background: #ffffff;
+  color: var(--text);
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+.modern-input::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* ... existing code ... */
+
+.platform-option {
+  height: 52px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* ... existing code ... */
+
+.file-dropzone {
+  min-height: 158px;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 1.2rem;
+  border: 1.5px dashed #c7d2fe;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff, #f8faff);
+  color: var(--text);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-dropzone strong {
+  max-width: 100%;
+  color: var(--heading);
+  font-size: 0.98rem;
+  font-weight: 850;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.file-dropzone small {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* ... existing code ... */
+
+.primary-action,
+.ghost-button,
+.danger-button {
+  border: none;
+  border-radius: 14px;
+  font-size: 0.94rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* ... existing code ... */
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.45rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.progress-meta strong {
+  color: var(--primary);
+  font-weight: 950;
+}
+
+/* ... existing code ... */
+
+.plist-preview h4 {
+  margin: 0 0 0.75rem;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.plist-preview pre {
+  max-height: 220px;
+  margin: 0;
+  overflow: auto;
+  color: #dbeafe;
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+/* ... existing code ... */
+
+.app-info {
+  min-width: 0;
+  text-align: left;
+}
+
+.app-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.app-info h4 {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--heading);
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-info p {
+  margin: 0.38rem 0 0.1rem;
+  color: #334155;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.app-info small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.platform-badge {
+  flex: 0 0 auto;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+/* ... existing code ... */
+
+.empty-state h4 {
+  margin: 0.8rem 0 0.3rem;
+  color: var(--heading);
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.empty-state p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* ... existing code ... */
+
+@media (max-width: 640px) {
+  .top-nav {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    width: 100%;
+  }
+
+  .nav-links a {
+    flex: 1;
+    text-align: center;
+    font-size: 0.88rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .hero-section h2 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .panel-header {
+    flex-direction: column;
+  }
+
+  .panel-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .panel-header p {
+    font-size: 0.88rem;
+  }
+
+  .hero-section,
+  .panel {
+    padding: 1.1rem;
+    border-radius: 22px;
+  }
+
+  .app-card {
+    grid-template-columns: 56px 1fr;
+  }
+
+  .app-icon-wrap,
+  .app-icon,
+  .app-icon-fallback {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+  }
+
+  .app-info h4 {
+    font-size: 0.95rem;
+  }
+
+  .app-info p {
+    font-size: 0.88rem;
+  }
+
+  .danger-button {
+    grid-column: 1 / -1;
+  }
 }
